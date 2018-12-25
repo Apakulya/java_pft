@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: de.lgohlke.selenium:webdriver:20181118">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.lgohlke.selenium/webdriver/20181118/8259aefe40102df1860b172b4db2de1573a3da41/webdriver-20181118.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.lgohlke.selenium/webdriver/20181118/1ae134ace4bd69b8a081f6449fbd7cc11c9df81a/webdriver-20181118-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
