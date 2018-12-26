@@ -10,8 +10,8 @@ public class SessionHelper extends HelperBase{
     super(driver);
   }
   public void Login(String username, String password) {
-    type(By.name("user"),"username");
-    type(By.name("pass"),"password");
+    type(By.name("user"),"admin");
+    type(By.name("pass"),"secret");
     click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]"));
   }
 }
