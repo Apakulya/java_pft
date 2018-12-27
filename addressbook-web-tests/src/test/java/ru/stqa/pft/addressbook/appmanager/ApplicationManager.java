@@ -11,6 +11,7 @@ public class ApplicationManager {
   protected WebDriver driver;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private ContactHelper сontactHelper;
   private SessionHelper sessionHelper;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -24,11 +25,11 @@ public class ApplicationManager {
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(driver);
+    сontactHelper = new ContactHelper(driver);
     navigationHelper = new NavigationHelper(driver);
-    sessionHelper= new SessionHelper(driver);
+    sessionHelper = new SessionHelper(driver);
     sessionHelper.Login("admin", "secret");
   }
-
 
   public void stop() {
     driver.quit();
@@ -68,5 +69,9 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return сontactHelper;
   }
 }
