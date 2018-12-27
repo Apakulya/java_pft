@@ -32,4 +32,12 @@ public class ContactHelper extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
     driver.switchTo().alert().accept();
   }
+
+  public void editContact() {
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[2]")).click();
+  }
+
+  public void submitContactEdit() {
+    driver.findElement(By.name("update")).click();
+  }
 }

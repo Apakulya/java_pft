@@ -37,4 +37,12 @@ public class GroupHelper extends HelperBase{
 
     click(By.name("selected[]"));
   }
+  public void editGroup() {
+    driver.findElement(By.name("edit")).click();
+  }
+
+  public void submitGroupEdition() {
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Groups'])[1]/following::form[1]")).click();
+    driver.findElement(By.name("update")).click();
+  }
 }
