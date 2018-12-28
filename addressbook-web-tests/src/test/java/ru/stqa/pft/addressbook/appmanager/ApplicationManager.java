@@ -28,11 +28,11 @@ public class ApplicationManager {
   public void init() {
     System.setProperty("webdriver.gecko.driver","C:\\Users\\Asus\\Documents\\Geckodriver\\geckodriver.exe");
     System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
-    if (browser==BrowserType.FIREFOX) {
+    if (browser.equals(BrowserType.FIREFOX)) {
       driver = new FirefoxDriver();
-    } else if (browser==BrowserType.CHROME) {
+    } else if (browser.equals(BrowserType.CHROME)) {
       driver = new ChromeDriver();
-    } else if (browser==BrowserType.IE){
+    } else if (browser.equals(BrowserType.IE)){
       driver = new InternetExplorerDriver();
     }
     baseUrl = "https://www.katalon.com/";
