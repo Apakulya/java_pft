@@ -19,9 +19,6 @@ public class NavigationHelper extends HelperBase {
   }
 
 
-  public void gotoLogopage() {
-    driver.findElement(By.id("logo")).click();
-  }
   public void gotoHomepage() {
     if (isElementPresent(By.id("maintable")))
     {
