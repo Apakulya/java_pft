@@ -52,4 +52,10 @@ public class ContactHelper extends HelperBase {
   public void submitContactEdit() {
     driver.findElement(By.name("update")).click();
   }
+
+  public void createContact(ContactData contact) {
+    fillGontactForm(contact, true);
+    submitContactreation();
+    returntoContactPage();
+  }
 }
