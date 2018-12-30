@@ -45,4 +45,15 @@ public class GroupHelper extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Groups'])[1]/following::form[1]")).click();
     driver.findElement(By.name("update")).click();
   }
+
+  public void CreateGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returntoGroupPage();
+  }
+
+  public boolean isThereGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
