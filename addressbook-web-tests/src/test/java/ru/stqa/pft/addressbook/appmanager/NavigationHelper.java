@@ -18,9 +18,6 @@ public class NavigationHelper extends HelperBase {
       click(By.linkText("groups"));
   }
 
-  public void gotoGontactCreationPage() {
-    click(By.linkText("add new"));
-  }
 
   public void gotoLogopage() {
     driver.findElement(By.id("logo")).click();

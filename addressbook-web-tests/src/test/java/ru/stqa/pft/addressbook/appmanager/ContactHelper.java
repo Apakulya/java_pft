@@ -18,9 +18,6 @@ public class ContactHelper extends HelperBase {
     typeDropDown(By.name("bday"), contactData.getBday());
     typeDropDown(By.name("bmonth"), contactData.getBmonth());
     type(By.name("byear"), contactData.getByear());
-    // if (isElementPresent(By.name("new_group"))) {
-    //   new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    // }
     if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -31,9 +28,12 @@ public class ContactHelper extends HelperBase {
   public void submitContactreation() {
     click(By.name("submit"));
   }
-
-  public void returntoContactPage() {
+  public void initContactCreation() {
     click(By.linkText("add new"));
+  }
+
+  public void returntoHomePage() {
+    click(By.linkText("home"));
   }
 
   public void selectContact() {
@@ -54,8 +54,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void createContact(ContactData contact) {
+    initContactCreation();
     fillGontactForm(contact, true);
     submitContactreation();
-    returntoContactPage();
+    returntoHomePage();
+  }
+
+  public boolean isThereContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
