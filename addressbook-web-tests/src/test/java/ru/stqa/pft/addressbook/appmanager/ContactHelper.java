@@ -2,9 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver driver) {
@@ -28,6 +32,7 @@ public class ContactHelper extends HelperBase {
   public void submitContactreation() {
     click(By.name("submit"));
   }
+
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
@@ -62,5 +67,21 @@ public class ContactHelper extends HelperBase {
 
   public boolean isThereContact() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    WebElement table = driver.findElement(By.cssSelector("tbody"));
+    List<WebElement> elements = table.findElements(By.tagName("tr"));
+    for (WebElement element : elements) {
+      if (element.getAttribute("name") != null) {
+        String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+        String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+        int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+        ContactData contact = new ContactData(id, firstname, lastname);
+        contacts.add(contact);
+      }
+    }
+    return contacts;
   }
 }
