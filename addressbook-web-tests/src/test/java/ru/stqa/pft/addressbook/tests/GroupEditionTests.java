@@ -1,38 +1,32 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 public class GroupEditionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
-    if (app.group().list().size()==0) {
+    if (app.group().all().size() == 0) {
       app.group().create(new GroupData().withName("Тест1"));
     }
   }
 
   @Test
   public void testGroupEditionTests() throws Exception {
-    List<GroupData> before = app.group().list();
-    int index = before.size() - 1;
-    GroupData group = new GroupData().withId(before.get(index).getId()).withName("666").
+    Groups before = app.group().all();
+    GroupData editedgroup = before.iterator().next();
+    GroupData group = new GroupData().withId(editedgroup.getId()).withName("666").
             withFooter("666").withHeader("666");
-    app.group().edit(index, group);
-    List<GroupData> after = app.group().list();
-    Assert.assertEquals(after.size(), before.size());
-
-    before.remove(index);
-    before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(before, after);
+    app.group().edit(group);
+    Groups after = app.group().all();
+    assertThat(after.size(), equalTo(before.size()));
+    assertThat(after, equalTo(before.without(editedgroup).withAdded(group)));
   }
 
 

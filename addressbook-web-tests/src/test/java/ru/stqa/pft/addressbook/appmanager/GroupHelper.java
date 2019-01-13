@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GroupHelper extends HelperBase {
 
@@ -16,6 +16,10 @@ public class GroupHelper extends HelperBase {
 
   public void returntoGroupPage() {
     click(By.linkText("group page"));
+  }
+
+  private void selectGroupById(int id) {
+    driver.findElement(By.cssSelector("input[value='"+ id + "']")).click();
   }
 
   public void submitGroupCreation() {
@@ -37,10 +41,6 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  public void selectGroup(int index) {
-    driver.findElements(By.name("selected[]")).get(index).click();
-  }
-
   public void editGroup() {
     driver.findElement(By.name("edit")).click();
   }
@@ -56,16 +56,18 @@ public class GroupHelper extends HelperBase {
     submitGroupCreation();
     returntoGroupPage();
   }
-  public void edit(int index, GroupData group) {
-    selectGroup(index);
+
+  public void delete(GroupData group) {
+    selectGroupById(group.getId());
+    deleteSelectedGroups();
+    returntoGroupPage();
+  }
+
+  public void edit(GroupData group) {
+    selectGroupById(group.getId());
     editGroup();
     fillGroupForm(group);
     submitGroupEdition();
-    returntoGroupPage();
-  }
-  public void delete(int index) {
-    selectGroup(index);
-    deleteSelectedGroups();
     returntoGroupPage();
   }
 
@@ -77,8 +79,8 @@ public class GroupHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> list() {
-    List<GroupData> groups = new ArrayList<GroupData>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
@@ -87,4 +89,5 @@ public class GroupHelper extends HelperBase {
     }
     return groups;
   }
+
 }
