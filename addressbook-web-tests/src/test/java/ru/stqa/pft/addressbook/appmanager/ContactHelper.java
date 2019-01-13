@@ -50,7 +50,7 @@ public class ContactHelper extends HelperBase {
     driver.switchTo().alert().accept();
   }
 
-  public void editContact() {
+  public void edit() {
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[2]")).click();
   }
 
@@ -58,10 +58,23 @@ public class ContactHelper extends HelperBase {
     driver.findElement(By.name("update")).click();
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     initContactCreation();
     fillGontactForm(contact, true);
     submitContactreation();
+    returntoHomePage();
+  }
+  public void edit(int index, ContactData contact) {
+    selectContact(index);
+    edit();
+    fillGontactForm(contact, false);
+    submitContactEdit();
+    returntoHomePage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContacts();
     returntoHomePage();
   }
 
@@ -69,7 +82,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     WebElement table = driver.findElement(By.cssSelector("tbody"));
     List<WebElement> elements = table.findElements(By.tagName("tr"));
