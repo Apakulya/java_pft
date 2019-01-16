@@ -46,7 +46,8 @@ public class ApplicationManager {
   }
 
   public void stop() {
-    driver.quit();
+    //driver.quit();
+    driver.close();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
