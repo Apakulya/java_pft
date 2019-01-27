@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 
-public class СontactPhoneTests extends TestBase {
+public class СontactHomeInfoTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
@@ -27,21 +27,29 @@ public class СontactPhoneTests extends TestBase {
       app.contact().create(new ContactData().withFirstName("Илья").withLastName("Ильич").withGroup(group.getName()));
     }
   }
+
  @Test
- public void testContactPhones(){
+ public void testContactInfo(){
    app.goTo().homepage();
    ContactData contact = app.contact().all().iterator().next();
    ContactData contactInfoFromEditForm = app.contact().InfoFromEditForm(contact);
    assertThat((contact.getAllPhones()), equalTo(MergePhones(contactInfoFromEditForm)));
+   assertThat((contact.getAllMails()), equalTo(MergeMails(contactInfoFromEditForm)));
+   assertThat((contact.getAddress()), equalTo(contactInfoFromEditForm.getAddress()));
  }
 
   private Object MergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(),contact.getMobilePhone(), contact.getWorkPhone())
             .stream().filter(s -> !s.equals(""))
-            .map(СontactPhoneTests::cleaned)
+            .map(СontactHomeInfoTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
+  private Object MergeMails(ContactData contact) {
+    return Arrays.asList(contact.getMail1(), contact.getMail2(),contact.getMail3())
+            .stream().filter(s -> !s.equals(""))
+            .collect(Collectors.joining("\n"));
+  }
 
   public static String cleaned(String phone){
 

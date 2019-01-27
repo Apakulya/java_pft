@@ -11,7 +11,17 @@ public class ContactData {
   private String mobilephone;
   private String group;
   private String allphones;
+  private String address;
+  private String mail1;
+  private String mail2;
+  private String mail3;
+  private String allmails;
+  private String detailedinfo;
 
+  public ContactData WithDerailedinfo(String detailedinfo) {
+    this.detailedinfo = detailedinfo;
+    return  this;
+  }
   public ContactData withAllPhones(String allphones) {
     this.allphones = allphones;
     return  this;
@@ -19,6 +29,9 @@ public class ContactData {
 
   public String getAllPhones() {
     return allphones;
+  }
+  public String getAllMails() {
+    return allmails;
   }
 
   public ContactData withId (int id) {
@@ -37,6 +50,26 @@ public class ContactData {
     this.group = group;
     return this;
   }
+  public ContactData withAllMails(String allmails) {
+    this.allmails = allmails;
+    return this;
+  }
+  public ContactData withMail1(String mail1) {
+    this.mail1 = mail1;
+    return this;
+  }
+  public ContactData withMail2(String mail2) {
+    this.mail2 = mail2;
+    return this;
+  }
+  public ContactData withMail3(String mail3) {
+    this.mail3 = mail3;
+    return this;
+  }
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
 
   public void setId(int id) {
     this.id = id;
@@ -51,7 +84,13 @@ public class ContactData {
 
     return lastname;
   }
+  public String getDetailedinfo() {
 
+    return detailedinfo;
+  }
+  public String getAddress() {
+    return address;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -99,4 +138,13 @@ public class ContactData {
     return mobilephone;
   }
 
+  public String getMail1() {
+    return mail1;
+  }
+  public String getMail2() {
+    return mail2;
+  }
+  public String getMail3() {
+    return mail3;
+  }
 }

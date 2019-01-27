@@ -7,8 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.tests.СontactHomeInfoTests;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver driver) {
@@ -114,8 +117,10 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allphones = cells.get(5).getText();
-      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname)
-              .withAllPhones(allphones));
+      String address = cells.get(3).getText();
+      String allmails = cells.get(4).getText();
+      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname).withAddress(address)
+              .withAllPhones(allphones).withAllMails(allmails));
      }
     return new Contacts(contactCache);
   }
@@ -135,8 +140,13 @@ public class ContactHelper extends HelperBase {
     String home = driver.findElement(By.name("home")).getAttribute("value");
     String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
     String work = driver.findElement(By.name("work")).getAttribute("value");
+    String address = driver.findElement(By.name("address")).getAttribute("value");
+    String mail1 = driver.findElement(By.name("email")).getAttribute("value");
+    String mail2 = driver.findElement(By.name("email2")).getAttribute("value");
+    String mail3 = driver.findElement(By.name("email3")).getAttribute("value");
+
     driver.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address).withMail1(mail1).withMail2(mail2).withMail3(mail3);
   }
   private void initContactModificationById(int id) {
     // WebElement checkbox = driver.findElement(By.cssSelector(String.format("input[value='%s']",id)));
@@ -146,6 +156,17 @@ public class ContactHelper extends HelperBase {
     // driver.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a",id))).click(); //последовательный переход
     // driver.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a",id))).click(); //подзапрос
     driver.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
   }
 
+  public ContactData InfoFromDetailedForm(ContactData contact) {
+    initContactDetailedFormById(contact.getId());
+   // String derailedinfo = driver.findElement(By.xpath("//body/div[@id='container']/div[@id='content']/b")).getText();
+    String derailedinfo = driver.findElement(By.xpath("//body/div[@id='container']/div[@id='content']")).getText();
+    return  new ContactData().WithDerailedinfo(derailedinfo);
+  }
+
+  private void initContactDetailedFormById(int id) {
+    driver.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+    }
 }
