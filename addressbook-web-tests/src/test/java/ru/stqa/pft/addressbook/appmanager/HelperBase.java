@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+
 public class HelperBase {
   public WebDriver driver;
 
@@ -25,6 +27,12 @@ public class HelperBase {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);
       }
+    }
+  }
+
+  protected void attach(By locator, File file) {
+    if (file != null) {
+      driver.findElement(locator).sendKeys(file.getAbsolutePath());
     }
   }
 
