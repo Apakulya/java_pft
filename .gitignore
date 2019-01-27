@@ -13,3 +13,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
+.idea/libraries/Gradle__com_thoughtworks_xstream_xstream_1_4_11_1.xml
+.idea/libraries/Gradle__ch_qos_logback_logback_core_1_3_0_alpha4.xml
+.idea/libraries/Gradle__xpp3_xpp3_min_1_1_4c.xml
+addressbook-web-tests/com/beust/jcommander/annotations.xml
