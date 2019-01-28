@@ -1,38 +1,71 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
-
+@Entity
+@Table(name="addressbook")
 public class ContactData {
+  @Id
+  @Column(name="id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name="firstname")
   private String firstname;
   @Expose
+  @Column(name="lastname")
   private String lastname;
+  @Column(name="home")
+  @Type(type = "text")
   private String homephone;
+  @Column(name="work")
+  @Type(type = "text")
   private String workphone;
+  @Column(name="mobile")
+  @Type(type = "text")
   private String mobilephone;
   @Expose
+  @Transient
   private String group;
+  @Transient
   private String allphones;
   @Expose
+  @Transient
   private String address;
+  @Transient
   private String mail1;
+  @Transient
   private String mail2;
+  @Transient
   private String mail3;
+  @Transient
   private String allmails;
+  @Transient
   private String detailedinfo;
-  private File photo;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Column(name="photo")
+  @Type(type="text")
+  private String photo;
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData WithDerailedinfo(String detailedinfo) {

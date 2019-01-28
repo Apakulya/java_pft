@@ -8,13 +8,20 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
+import javax.swing.*;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class TestBase {
   Logger logger = LoggerFactory.getLogger(TestBase.class);
-  protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
+  protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
   private Method m;
 
   @BeforeSuite(alwaysRun = true)
@@ -28,11 +35,21 @@ public class TestBase {
   }
 
   @BeforeMethod
-  public void logTestStart(Method m, Object[] p){
+  public void logTestStart(Method m, Object[] p) {
     logger.info("Start test " + m.getName() + " With parameters " + Arrays.asList(p));
   }
+
   @AfterMethod(alwaysRun = true)
-  public void logTestStop(Method m,  Object[] p){
-    logger.info("Stop test " + m.getName()+ " With parameters " + Arrays.asList(p));
+  public void logTestStop(Method m, Object[] p) {
+    logger.info("Stop test " + m.getName() + " With parameters " + Arrays.asList(p));
+  }
+
+  public void verifyGroupListInUI() {
+    if (Boolean.getBoolean("verifyUI")) {
+      Groups dbgroups = app.db().groups();
+      Groups uigroups = app.group().all();
+      assertThat(uigroups, equalTo(dbgroups.stream().map((g) ->
+              new GroupData().withId(g.getId()).withName(g.getName())).collect(Collectors.toSet())));
+    }
   }
 }
