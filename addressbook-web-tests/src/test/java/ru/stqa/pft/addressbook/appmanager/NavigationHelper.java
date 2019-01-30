@@ -26,4 +26,8 @@ public class NavigationHelper extends HelperBase {
     }
     click(By.linkText("home"));
   }
+
+  public void groupPageLink(int id) {
+    driver.findElement(By.cssSelector(String.format("a[href='./?group=%s']", id))).click();
+  }
 }

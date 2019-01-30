@@ -5,7 +5,10 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 @Table(name="addressbook")
 public class ContactData {
@@ -20,6 +23,7 @@ public class ContactData {
   private String lastname;
   @Column(name="home")
   @Type(type = "text")
+  @Expose
   private String homephone;
   @Column(name="work")
   @Type(type = "text")
@@ -27,24 +31,40 @@ public class ContactData {
   @Column(name="mobile")
   @Type(type = "text")
   private String mobilephone;
-  @Expose
-  @Transient
-  private String group;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name="address_in_groups",joinColumns
+          = @JoinColumn(name="id"),inverseJoinColumns = @JoinColumn(name="group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
   @Transient
   private String allphones;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(firstname, that.firstname) &&
+            Objects.equals(lastname, that.lastname) &&
+            Objects.equals(homephone, that.homephone) &&
+            Objects.equals(groups, that.groups) &&
+            Objects.equals(address, that.address);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstname, lastname, homephone, groups, address);
+  }
+
   @Expose
-  @Transient
+  //@Transient
+  @Column(name="address")
+  @Type(type = "text")
   private String address;
   @Transient
   private String mail1;
   @Transient
   private String mail2;
-  @Transient
-  private String mail3;
-  @Transient
-  private String allmails;
-  @Transient
-  private String detailedinfo;
 
   @Override
   public String toString() {
@@ -52,8 +72,18 @@ public class ContactData {
             "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", homephone='" + homephone + '\'' +
+            ", groups=" + groups +
+            ", address='" + address + '\'' +
             '}';
   }
+
+  @Transient
+  private String mail3;
+  @Transient
+  private String allmails;
+  @Transient
+  private String detailedinfo;
 
   @Column(name="photo")
   @Type(type="text")
@@ -96,10 +126,6 @@ public class ContactData {
     this.lastname = lastname;
     return this;
   }
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
   public ContactData withAllMails(String allmails) {
     this.allmails = allmails;
     return this;
@@ -134,6 +160,11 @@ public class ContactData {
 
     return lastname;
   }
+
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
+
   public String getDetailedinfo() {
 
     return detailedinfo;
@@ -142,27 +173,8 @@ public class ContactData {
     return address;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstname, lastname);
-  }
-
   public int getId() {
     return id;
-  }
-
-  public String getGroup() {
-    return group;
   }
 
   public ContactData withHomePhone(String homephone) {
@@ -196,5 +208,14 @@ public class ContactData {
   }
   public String getMail3() {
     return mail3;
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
+  public ContactData removefromGroup(GroupData group) {
+    groups.remove(group);
+    return this;
   }
 }

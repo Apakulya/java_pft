@@ -54,28 +54,24 @@ public class ContactCreationTests extends TestBase {
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
   }
-  @BeforeTest (enabled = false)
-  public void ensureGroupExist(){
-    app.goTo().groupPage();
-    if (app.group().all().size() == 0) {
-      app.group().create(new GroupData().withName("test1"));
-    }
+  @BeforeTest
+  public void ensurePreconditions() {
+    if (app.db().groups().size()==0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("Тест1"));}
   }
   @Test(dataProvider = "validcontactsFromJson")
   public void testContactCreationTests(ContactData contact) throws Exception {
-    //app.goTo().groupPage();
-    //Groups groups = app.group().all();
-    //GroupData group = groups.iterator().next();
-   
-    app.goTo().homepage();
-    Contacts before = app.contact().all();
+    Groups groups = app.db().groups();
     File photo = new File("src/test/resources/photo.jpg");
-    //ContactData contact = new ContactData().withFirstName("Настюха").withLastName("Настюха").withGroup(group.getName()).withPhoto(photo);
-    app.contact().create(contact.withPhoto(photo));
+    app.goTo().homepage();
+    Contacts before = app.db().contacts();
+    app.contact().create(contact.withPhoto(photo).inGroup(groups.iterator().next()));
     assertThat(app.contact().count(),equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded
-            (contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+       (contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+
   }
 
 }

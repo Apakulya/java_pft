@@ -24,7 +24,8 @@ public class СontactHomeInfoTests extends TestBase {
     GroupData group = groups.iterator().next();
     app.goTo().homepage();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Илья").withLastName("Ильич").withGroup(group.getName()));
+      app.contact().create(new ContactData().withFirstName("Илья").withLastName("Ильич"));
+              //.withGroup(group.getName()));
     }
   }
 
