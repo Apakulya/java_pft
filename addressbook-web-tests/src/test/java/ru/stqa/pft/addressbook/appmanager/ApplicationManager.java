@@ -21,7 +21,6 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private ContactHelper сontactHelper;
   private SessionHelper sessionHelper;
-  private String baseUrl;
   private String browser;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
@@ -45,8 +44,7 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE)){
       driver = new InternetExplorerDriver();
     }
-    baseUrl = "https://www.katalon.com/";
-    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+     driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     driver.get(properties.getProperty("web.baseURL"));
     groupHelper = new GroupHelper(driver);
     сontactHelper = new ContactHelper(driver);

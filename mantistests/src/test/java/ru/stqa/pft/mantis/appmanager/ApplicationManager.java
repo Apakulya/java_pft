@@ -17,7 +17,6 @@ import static org.testng.Assert.fail;
 public class ApplicationManager {
   private final Properties properties;
   protected WebDriver driver;
-  private String baseUrl;
   private String browser;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
@@ -40,7 +39,6 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE)){
       driver = new InternetExplorerDriver();
     }
-    baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     driver.get(properties.getProperty("web.baseURL"));
   }
@@ -51,5 +49,13 @@ public class ApplicationManager {
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
     }
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
+
+  public HttpSession newSession(){
+    return new HttpSession(this);
   }
 }
