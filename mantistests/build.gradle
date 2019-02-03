@@ -8,9 +8,10 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'de.lgohlke.selenium:webdriver:20181118'
     implementation 'it.ozimov:hamcrest:2.0.0'
+    implementation 'commons-net:commons-net:3.6'
 }
 
-task test(type: Test) {
+task(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
     }
