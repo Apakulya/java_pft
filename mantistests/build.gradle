@@ -4,11 +4,14 @@ repositories {
     mavenCentral()
 }
 dependencies {
+    implementation 'ch.qos.logback:logback-classic:1.3.0-alpha4'
     implementation 'org.testng:testng:7.0.0-beta1'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'de.lgohlke.selenium:webdriver:20181118'
     implementation 'it.ozimov:hamcrest:2.0.0'
     implementation 'commons-net:commons-net:3.6'
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
 }
 
 task(type: Test) {
