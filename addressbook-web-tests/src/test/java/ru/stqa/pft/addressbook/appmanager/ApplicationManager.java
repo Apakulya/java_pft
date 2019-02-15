@@ -26,6 +26,7 @@ public class ApplicationManager {
   private StringBuffer verificationErrors = new StringBuffer();
   private DbHelper dbHelper;
 
+
   public ApplicationManager(String browser) {
     this.browser=browser;
     properties = new Properties();
@@ -100,5 +101,6 @@ public class ApplicationManager {
   }
 
   public DbHelper db() {return dbHelper;}
+
 
 }

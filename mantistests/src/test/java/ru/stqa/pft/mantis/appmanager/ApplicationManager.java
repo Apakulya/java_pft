@@ -23,6 +23,10 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private JamesHelper jamesHelper;
+  private ManageHelper manageHelper;
+  private LoginHelper loginHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -34,6 +38,16 @@ public class ApplicationManager {
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     System.setProperty("webdriver.gecko.driver", "C:\\Users\\Asus\\Documents\\Geckodriver\\geckodriver.exe");
     System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
+    if (browser.equals(BrowserType.FIREFOX)) {
+      driver = new FirefoxDriver();
+    } else if (browser.equals(BrowserType.CHROME)) {
+      driver = new ChromeDriver();
+    } else if (browser.equals(BrowserType.IE)){
+      driver = new InternetExplorerDriver();
+    }
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    driver.get(properties.getProperty("web.baseURL"));
+    dbHelper = new DbHelper();
 
   }
 
@@ -61,6 +75,14 @@ public class ApplicationManager {
       registrationHelper = new RegistrationHelper(this);
     }
     return registrationHelper;
+  }
+
+
+  public LoginHelper login() {
+    if (loginHelper == null) {
+      loginHelper = new LoginHelper(this);
+    }
+    return loginHelper;
   }
 
   public WebDriver getDriver() {
@@ -91,4 +113,18 @@ public class ApplicationManager {
     }
     return mailHelper;
   }
+  public JamesHelper james(){
+    if (jamesHelper == null) {
+      jamesHelper = new JamesHelper(this);
+    }
+    return jamesHelper;
+  }
+
+  public ManageHelper manage() {
+    if (manageHelper == null) {
+      manageHelper = new ManageHelper(this);
+    }
+    return manageHelper;
+  }
+  public DbHelper db() {return dbHelper;}
 }
