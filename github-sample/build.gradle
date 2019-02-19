@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'MyFirstProgram'
+repositories
+        {
+            mavenCentral()
+        }
+dependencies
+        {
+            implementation 'org.testng:testng:7.0.0-beta1'
+            implementation 'com.jcabi:jcabi-github:1.0'
+            implementation 'org.slf4j:slf4j-nop:1.8.0-beta2'
+        }
+
