@@ -6,6 +6,17 @@ public class Issue {
   private String description;
   private Project project;
 
+  public String getResolution() {
+    return resolution;
+  }
+
+  public Issue withResolution(String resolution) {
+    this.resolution = resolution;
+    return this;
+  }
+
+  private String resolution;
+
   public int getId() {
     return id;
   }

@@ -1,6 +1,7 @@
 package ru.stqa.pft.mantis.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.model.Issue;
 import ru.stqa.pft.mantis.model.Project;
@@ -12,10 +13,21 @@ import java.util.Set;
 
 public class SoapTests extends TestBase {
   private Issue Issue;
-
+  @BeforeTest
+  public void verifyOpenIssues() throws MalformedURLException, ServiceException, RemoteException {
+    Set<Project> projects = app.Soap().getProjects();
+    Set<Issue> issues = app.Soap().getIssues(projects.iterator().next().getId());
+    for (Issue issue : issues) {
+     skipIfNotFixed(issue.getId());
+   }
+  }
   @Test
   public void testGetProjects() throws MalformedURLException, javax.xml.rpc.ServiceException, RemoteException {
     Set<Project> projects = app.Soap().getProjects();
+    Set<Issue> issues = app.Soap().getIssues(projects.iterator().next().getId());
+    for (Issue issue : issues) {
+      skipIfNotFixed(issue.getId());
+    }
     System.out.println(projects.size());
     for (Project project : projects){
       System.out.println(project.getName());
