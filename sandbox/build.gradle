@@ -9,3 +9,5 @@ dependencies
         {
             implementation 'org.testng:testng:7.0.0-beta1'
         }
+task(type: Test) {
+    useTestNG() }
