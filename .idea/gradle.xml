@@ -69,6 +69,19 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox — копия" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-4.10.3" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/sandbox — копия" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/soap-sample" />
         <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-4.10.3" />
