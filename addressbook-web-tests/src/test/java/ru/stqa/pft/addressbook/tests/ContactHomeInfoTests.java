@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 
-public class СontactHomeInfoTests extends TestBase {
+public class ContactHomeInfoTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
@@ -42,7 +42,7 @@ public class СontactHomeInfoTests extends TestBase {
   private Object MergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(),contact.getMobilePhone(), contact.getWorkPhone())
             .stream().filter(s -> !s.equals(""))
-            .map(СontactHomeInfoTests::cleaned)
+            .map(ContactHomeInfoTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
