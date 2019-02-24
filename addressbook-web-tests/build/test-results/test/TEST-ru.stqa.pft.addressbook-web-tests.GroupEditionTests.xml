@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook-web-tests.GroupEditionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-02-22T14:51:07" hostname="DESKTOP-KSIT5DT" time="0.013">
+  <properties/>
+  <testcase name="testGroupEditionTests" classname="ru.stqa.pft.addressbook-web-tests.GroupEditionTests" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
