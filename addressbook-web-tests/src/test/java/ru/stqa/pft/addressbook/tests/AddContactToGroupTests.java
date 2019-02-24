@@ -15,12 +15,12 @@ public class AddContactToGroupTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test"));
+      app.group().create(new GroupData().withName("test 1"));
     }
     if (app.db().contacts().size() == 0) {
       app.goTo().homepage();
       File photo = new File("src/test/resources/photo.jpg");
-      app.contact().create(new ContactData().withFirstName("test").withLastName("test").withPhoto(photo).inGroup(app.db().groups().iterator().next()));
+      app.contact().create(new ContactData().withFirstName("test1").withLastName("test2").withPhoto(photo).inGroup(app.db().groups().iterator().next()));
     }
   }
 

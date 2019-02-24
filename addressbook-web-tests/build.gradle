@@ -52,3 +52,5 @@ task testContacts(type: Test) {
 task wrapper(type: Wrapper) {
     gradleVersion = '4.10.3'
 }
+
+tasks.withType(Javadoc) { options.encoding = 'ISO-8859-1' }

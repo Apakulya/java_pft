@@ -58,7 +58,7 @@ public class ContactCreationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().groups().size()==0) {
       app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test"));}
+      app.group().create(new GroupData().withName("test1"));}
   }
   @Test(dataProvider = "validcontactsFromJson")
   public void testContactCreationTests(ContactData contact) throws Exception {
