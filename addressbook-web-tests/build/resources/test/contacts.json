@@ -1,0 +1,20 @@
+[
+  {
+    "firstname": "Имя 0",
+    "lastname": "Фамилия 0",
+    "homephone": "89810",
+    "address": "Адрес 0"
+  },
+  {
+    "firstname": "Имя 1",
+    "lastname": "Фамилия 1",
+    "homephone": "89811",
+    "address": "Адрес 1"
+  },
+  {
+    "firstname": "Имя 2",
+    "lastname": "Фамилия 2",
+    "homephone": "89812",
+    "address": "Адрес 2"
+  }
+]
