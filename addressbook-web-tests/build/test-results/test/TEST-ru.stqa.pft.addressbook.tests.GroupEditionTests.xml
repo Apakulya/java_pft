@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.GroupEditionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-02-24T10:30:47" hostname="DESKTOP-KSIT5DT" time="1.605">
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupEditionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-02-24T10:33:37" hostname="DESKTOP-KSIT5DT" time="1.606">
   <properties/>
-  <testcase name="testGroupEditionTests" classname="ru.stqa.pft.addressbook.tests.GroupEditionTests" time="1.605"/>
-  <system-out><![CDATA[13:30:47.874 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testGroupEditionTests With parameters []
+  <testcase name="testGroupEditionTests" classname="ru.stqa.pft.addressbook.tests.GroupEditionTests" time="1.606"/>
+  <system-out><![CDATA[13:33:37.264 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testGroupEditionTests With parameters []
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
