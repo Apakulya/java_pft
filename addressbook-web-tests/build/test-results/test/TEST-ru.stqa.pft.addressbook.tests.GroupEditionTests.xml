@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupEditionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-02-24T09:58:22" hostname="DESKTOP-KSIT5DT" time="1.618">
+  <properties/>
+  <testcase name="testGroupEditionTests" classname="ru.stqa.pft.addressbook.tests.GroupEditionTests" time="1.618"/>
+  <system-out><![CDATA[12:58:22.047 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testGroupEditionTests With parameters []
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
