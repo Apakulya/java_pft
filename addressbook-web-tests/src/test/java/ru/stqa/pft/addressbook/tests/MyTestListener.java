@@ -9,7 +9,8 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 public class MyTestListener implements ITestListener {
   @Override
   public void onTestStart(ITestResult result) {
-
+    ApplicationManager app = (ApplicationManager) result.getTestContext().getAttribute("app");
+    saveScreenshot(app.takeScreenshot());
   }
 
   @Override
