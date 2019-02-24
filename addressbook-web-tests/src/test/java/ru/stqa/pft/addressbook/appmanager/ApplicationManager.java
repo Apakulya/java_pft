@@ -114,5 +114,7 @@ public class ApplicationManager {
 
   public DbHelper db() {return dbHelper;}
 
-
+  public byte[] takeScreenshot(){
+   return  ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+  }
 }

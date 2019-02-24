@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.968s</div>
+<div class="counter">1.060s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">testDeleteContactFromGroup</td>
-<td class="success">0.968s</td>
+<td class="success">1.060s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,13 +87,17 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>13:33:29.977 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testDeleteContactFromGroup With parameters []
+<pre>16:21:30.428 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testDeleteContactFromGroup With parameters []
 Hibernate: select contactdat0_.id as id1_1_, contactdat0_.address as address2_1_, contactdat0_.firstname as firstnam3_1_, contactdat0_.home as home4_1_, contactdat0_.lastname as lastname5_1_, contactdat0_.mobile as mobile6_1_, contactdat0_.photo as photo7_1_, contactdat0_.work as work8_1_ from addressbook contactdat0_ where deprecated=0
 Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
 Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
 Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
+Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
+Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
+Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
+Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
-Hibernate: select contactdat0_.id as id1_1_, contactdat0_.address as address2_1_, contactdat0_.firstname as firstnam3_1_, contactdat0_.home as home4_1_, contactdat0_.lastname as lastname5_1_, contactdat0_.mobile as mobile6_1_, contactdat0_.photo as photo7_1_, contactdat0_.work as work8_1_ from addressbook contactdat0_ where contactdat0_.id=340
+Hibernate: select contactdat0_.id as id1_1_, contactdat0_.address as address2_1_, contactdat0_.firstname as firstnam3_1_, contactdat0_.home as home4_1_, contactdat0_.lastname as lastname5_1_, contactdat0_.mobile as mobile6_1_, contactdat0_.photo as photo7_1_, contactdat0_.work as work8_1_ from addressbook contactdat0_ where contactdat0_.id=357
 Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, groupdata1_.group_id as group_id1_2_1_, groupdata1_.group_footer as group_fo2_2_1_, groupdata1_.group_header as group_he3_2_1_, groupdata1_.group_name as group_na4_2_1_ from address_in_groups groups0_ inner join group_list groupdata1_ on groups0_.group_id=groupdata1_.group_id where groups0_.id=?
 </pre>
 </span>
@@ -106,7 +110,7 @@ Hibernate: select groups0_.id as id1_0_0_, groups0_.group_id as group_id2_0_0_, 
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.3</a> at 24.02.2019 13:33:39</p>
+<a href="http://www.gradle.org">Gradle 4.10.3</a> at 24.02.2019 16:21:41</p>
 </div>
 </div>
 </body>

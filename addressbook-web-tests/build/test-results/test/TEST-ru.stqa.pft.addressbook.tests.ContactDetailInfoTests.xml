@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactDetailInfoTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-02-24T10:33:27" hostname="DESKTOP-KSIT5DT" time="1.34">
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactDetailInfoTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-02-24T13:21:25" hostname="DESKTOP-KSIT5DT" time="2.266">
   <properties/>
-  <testcase name="testContactInfo" classname="ru.stqa.pft.addressbook.tests.ContactDetailInfoTests" time="1.34">
-    <failure message="java.lang.AssertionError: &#10;Expected: &quot;Name 0 Surname 0\n\nH: 89810\nM: \nW: \n\nAddress 0&quot;&#10;     but: was &quot;Name 0 Surname 0\n\nAddress 0\n\nH: 89810\n\n\nMember of: test 1&quot;" type="java.lang.AssertionError">java.lang.AssertionError: 
-Expected: &quot;Name 0 Surname 0\n\nH: 89810\nM: \nW: \n\nAddress 0&quot;
-     but: was &quot;Name 0 Surname 0\n\nAddress 0\n\nH: 89810\n\n\nMember of: test 1&quot;
+  <testcase name="testContactInfo" classname="ru.stqa.pft.addressbook.tests.ContactDetailInfoTests" time="2.266">
+    <failure message="java.lang.AssertionError: &#10;Expected: &quot;Name 1 Surname 1\n\nH: 89811\nM: \nW: \n\nAddress 1&quot;&#10;     but: was &quot;Name 1 Surname 1\n\nAddress 1\n\nH: 89811\n\n\nMember of: 666&quot;" type="java.lang.AssertionError">java.lang.AssertionError: 
+Expected: &quot;Name 1 Surname 1\n\nH: 89811\nM: \nW: \n\nAddress 1&quot;
+     but: was &quot;Name 1 Surname 1\n\nAddress 1\n\nH: 89811\n\n\nMember of: 666&quot;
 	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)
 	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:6)
 	at ru.stqa.pft.addressbook.tests.ContactDetailInfoTests.testContactInfo(ContactDetailInfoTests.java:20)
@@ -60,7 +60,7 @@ Expected: &quot;Name 0 Surname 0\n\nH: 89810\nM: \nW: \n\nAddress 0&quot;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <system-out><![CDATA[13:33:27.445 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactInfo With parameters []
+  <system-out><![CDATA[16:21:25.989 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactInfo With parameters []
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
