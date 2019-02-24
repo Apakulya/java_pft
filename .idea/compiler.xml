@@ -8,6 +8,8 @@
       <module name="addressbook-web-tests2.test" target="11" />
       <module name="github-sample.main" target="11" />
       <module name="github-sample.test" target="11" />
+      <module name="java_pft.sandbox.main" target="11" />
+      <module name="java_pft.sandbox.test" target="11" />
       <module name="mantistests.main" target="11" />
       <module name="mantistests.test" target="11" />
       <module name="rest-sample.main" target="11" />
