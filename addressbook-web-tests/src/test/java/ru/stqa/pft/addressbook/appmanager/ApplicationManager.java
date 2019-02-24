@@ -5,10 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -38,14 +41,22 @@ public class ApplicationManager {
     System.setProperty("webdriver.gecko.driver","C:\\Users\\Asus\\Documents\\Geckodriver\\geckodriver.exe");
     System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
     dbHelper = new DbHelper();
-    if (browser.equals(BrowserType.FIREFOX)) {
-      driver = new FirefoxDriver();
-    } else if (browser.equals(BrowserType.CHROME)) {
-      driver = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)){
-      driver = new InternetExplorerDriver();
+
+    if ("".equals(properties.getProperty("selenium.server"))) {
+
+      if (browser.equals(BrowserType.FIREFOX)) {
+        driver = new FirefoxDriver();
+      } else if (browser.equals(BrowserType.CHROME)) {
+        driver = new ChromeDriver();
+      } else if (browser.equals(BrowserType.IE)) {
+        driver = new InternetExplorerDriver();
+      }
+    } else {
+      DesiredCapabilities capabilities = new DesiredCapabilities();
+      capabilities.setBrowserName(browser);
+      driver = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
     }
-     driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     driver.get(properties.getProperty("web.baseURL"));
     groupHelper = new GroupHelper(driver);
     сontactHelper = new ContactHelper(driver);
