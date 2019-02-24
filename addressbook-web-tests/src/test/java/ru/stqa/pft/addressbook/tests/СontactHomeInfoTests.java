@@ -18,13 +18,13 @@ public class СontactHomeInfoTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().all().size() == 0) {
-      app.group().create(new GroupData().withName("test1"));
+      app.group().create(new GroupData().withName("test"));
     }
     Groups groups = app.group().all();
     GroupData group = groups.iterator().next();
     app.goTo().homepage();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Илья").withLastName("Ильич"));
+      app.contact().create(new ContactData().withFirstName("test").withLastName("test"));
               //.withGroup(group.getName()));
     }
   }

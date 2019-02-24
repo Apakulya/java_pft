@@ -20,7 +20,7 @@ public class AddContactToGroupTests extends TestBase {
     if (app.db().contacts().size() == 0) {
       app.goTo().homepage();
       File photo = new File("src/test/resources/photo.jpg");
-      app.contact().create(new ContactData().withFirstName("Илья").withLastName("Ильич").withPhoto(photo).inGroup(app.db().groups().iterator().next()));
+      app.contact().create(new ContactData().withFirstName("test").withLastName("test").withPhoto(photo).inGroup(app.db().groups().iterator().next()));
     }
   }
 

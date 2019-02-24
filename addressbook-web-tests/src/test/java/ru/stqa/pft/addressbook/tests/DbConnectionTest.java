@@ -5,7 +5,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.sql.*;
-import java.util.Properties;
+
 
 public class DbConnectionTest {
   @Test

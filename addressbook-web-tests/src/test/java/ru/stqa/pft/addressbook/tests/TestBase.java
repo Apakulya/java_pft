@@ -11,7 +11,7 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import javax.swing.*;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.stream.Collectors;

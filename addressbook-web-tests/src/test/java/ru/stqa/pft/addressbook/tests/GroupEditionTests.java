@@ -13,7 +13,7 @@ public class GroupEditionTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().groups().size()==0) {
     app.goTo().groupPage();
-    app.group().create(new GroupData().withName("Тест1"));}
+    app.group().create(new GroupData().withName("test"));}
   }
 
   @Test
